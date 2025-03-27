@@ -19,19 +19,33 @@ This dedicated sidebar allows users to set up translation parameters without lea
 
 In this AI Translation's sidebar, users can
 * Select the **source languages (input language)** and **target languages (desired translation output)** from a dropdown menu supporting a wide range of languages.
+  
 ![Src_Tar_Lang](images/Src_Target_Lang.gif)
+
 * Choose from **multiple AI models** to translate the provided text.
+
 ![ModelsAI](images/ModelAI.gif)
+
 * Control **randomness** and **creativity** of the translation output by adjusting the **temperature** with the range of $0.0$ to $1.0$.
+  
 ![Temperature](images/Adjust_temp.gif)
+
 * Choose the **writing style** for the translation output, such as *academic*, *professional*, or *casual*.
+  
 ![Style](images/Wri_Style.gif)
+
 * Enter the provided text that users want to translate into the **"Text to Translate"** frame. 
+  
 ![Text_Frame](images/Text_Frame.gif)
+
 * View the translated output in the **"Translation Result"** frame.
+  
 ![result](images/Result.gif)
+
 * Copy the translated text to the clipboard by clicking the **"Copy Result"** button.
+  
 ![Copy](images/copy.png)
+
 ### 2.2. Models AI-Powered Translation
 
 In this assignment, thanks to supporting various **Gemini** and **Gemma** models, the plugin can provide high-quality translations tailored to the user's writing style and context. The models include:
@@ -127,6 +141,7 @@ Open `appsscript.json` on Google Apps Script and add required OAuth Scopes and U
 ```
 
 The detailed process is as follows:
+
 ![config_appsscript](images/config_appsscript.gif)
 
 
@@ -149,6 +164,7 @@ The detailed process is as follows:
 * Then `Add Test` on `Editor Add-on` and select document to test.
 
 The detailed process is as follows:
+
 ![test](images/test.gif)
 
 ### 3.3. Deployment
