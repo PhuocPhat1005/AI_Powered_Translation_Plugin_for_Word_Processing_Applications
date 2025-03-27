@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <base target="_top">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 24px;
+                font-size: 22px;
+                color: #333;
+            }
+
+            .translation-section {
+                display: flex;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            .text-column {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .text-column label {
+                margin-bottom: 6px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .text-column textarea {
+                flex-grow: 1;
+                width: 100%;
+                height: 120px;
+                padding: 10px;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                resize: none;
+                background-color: #f9f9f9;
+                box-sizing: border-box;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-weight: bold;
+                font-size: 15px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>Translate Selected Text</h2>
+
+        <div class="translation-section">
+            <!-- Original Text -->
+            <div class="text-column">
+                <label for="selectedText">Original Text</label>
+                <textarea id="selectedText" readonly><?= selectedText ?></textarea>
+            </div>
+
+            <!-- Translated Text -->
+            <div class="text-column">
+                <label for="translatedText">Translated Text</label>
+                <textarea id="translatedText" readonly>Translating...</textarea>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="replaceInDocument()">Replace</button>
+        </div>
+
+        <script>
+            // Load config values from Apps Script
+            const config = {
+                sourceLang: '<?= sourceLang ?>',
+                targetLang: '<?= targetLang ?>',
+                model: '<?= model ?>',
+                temperature: parseFloat('<?= temperature ?>'),
+                style: '<?= style ?>'
+            };
+
+            const selectedText = document.getElementById('selectedText').value;
+            const translatedTextArea = document.getElementById('translatedText');
+
+            function callTranslationImmediately() {
+                if (!selectedText.trim()) {
+                    translatedTextArea.value = "No text selected.";
+                    console.warn("No text selected.");
+                    return;
+                }
+
+                translatedTextArea.value = "Translating...";
+
+                console.log("Selected Text:", selectedText);
+                console.log("Source Language:", config.sourceLang);
+                console.log("Target Language:", config.targetLang);
+                console.log("Model:", config.model);
+                console.log("Temperature:", config.temperature);
+                console.log("Writing Style: ", config.style);
+
+                google.script.run.withSuccessHandler(function (response) {
+                    console.log("Translated response:", response);
+                    translatedTextArea.value = response;
+                }).translateText({
+                    text: selectedText,
+                    sourceLang: config.sourceLang,
+                    targetLang: config.targetLang,
+                    model: config.model,
+                    temperature: config.temperature,
+                    style: config.style
+                });
+            }
+
+            function replaceInDocument() {
+                const newText = translatedTextArea.value;
+
+                if (!newText.trim() || newText === "Translating...") {
+                    alert("Translation not ready yet.");
+                    return;
+                }
+
+                google.script.run.withSuccessHandler(function () {
+                    alert("Replaced successfully!");
+                    google.script.host.close();
+                }).replaceSelectedText(newText);
+            }
+
+            // Run translation when page loads
+            window.onload = callTranslationImmediately;
+        </script>
+
+    </body>
+
+</html>

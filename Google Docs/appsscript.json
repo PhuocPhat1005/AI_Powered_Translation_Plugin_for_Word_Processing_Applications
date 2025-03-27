@@ -1,0 +1,35 @@
+{
+  "timeZone": "Asia/Ho_Chi_Minh",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/documents.currentonly",
+    "https://www.googleapis.com/auth/script.container.ui",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/script.locale",
+    "https://www.googleapis.com/auth/documents",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "urlFetchWhitelist": [
+    "https://generativelanguage.googleapis.com/"
+  ],
+  "addOns": {
+    "common": {
+      "name": "AI Translation",
+      "logoUrl": "https://img.icons8.com/color/2x/search",
+      "useLocaleFromApp": true,
+      "homepageTrigger": {
+        "runFunction": "showSideBar"
+      }
+    },
+    "docs": {
+      "homepageTrigger": {
+        "runFunction": "showSideBar"
+      }
+    }
+  },
+  "webapp": {
+    "executeAs": "USER_ACCESSING",
+    "access": "MYSELF"
+  }
+}

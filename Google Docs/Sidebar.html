@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <base target="_top">
+        <style>
+            body {
+                font-family: "Segoe UI", sans-serif;
+                padding: 10px;
+                background-color: #f4f6f8;
+            }
+
+            h2 {
+                text-align: center;
+                color: #2c3e50;
+            }
+
+            .banner {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .banner img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                color: #34495e;
+            }
+
+            select,
+            input[type="number"],
+            textarea,
+            #result {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                background-color: #ffffff;
+                box-sizing: border-box;
+                font-family: "Segoe UI", sans-serif;
+            }
+
+            textarea {
+                resize: vertical;
+            }
+
+            #result {
+                min-height: 100px;
+                margin-bottom: 10px;
+                color: #2d3436;
+                border: 1px solid #b2bec3;
+                background-color: #ecf0f1;
+            }
+
+            optgroup {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+
+            button {
+                background-color: #3498db;
+                color: white;
+                font-weight: bold;
+                padding: 10px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #2980b9;
+            }
+
+            .button-copy {
+                margin-top: 5px;
+                background-color: #2ecc71;
+            }
+
+            .button-copy:hover {
+                background-color: #27ae60;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="banner">
+            <img src="https://img.icons8.com/color/2x/search" alt="AI Translate Logo">
+        </div>
+
+        <h2>AI Translation</h2>
+
+        <!-- Source Language -->
+        <div class="form-group">
+            <label for="sourceLang">Source Language</label>
+            <select id="sourceLang"></select>
+        </div>
+
+        <!-- Target Language -->
+        <div class="form-group">
+            <label for="targetLang">Target Language</label>
+            <select id="targetLang"></select>
+        </div>
+
+        <!-- Model -->
+        <div class="form-group">
+            <label for="model">Model AI</label>
+            <select id="model">
+                <optgroup label="PREVIEW">
+                    <option value="learnlm-1.5-pro-experimental">LearnLM 1.5 Pro Experimental</option>
+                </optgroup>
+                <optgroup label="GEMINI 1.5">
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                    <option value="gemini-1.5-flash-8b">Gemini 1.5 Flash-8B</option>
+                </optgroup>
+                <optgroup label="GEMINI 2">
+                    <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+                    <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash-Lite</option>
+                    <option value="gemini-2.0-flash-thinking-exp-01-21">Gemini 2.0 Flash Thinking Experimental 01-21
+                    </option>
+                    <option value="gemini-2.0-flash-exp-image-generation">Gemini 2.0 Flash (Image Generation)
+                        Experimental</option>
+                </optgroup>
+                <optgroup label="GEMINI 2.5 (Experimental)">
+                    <option value="gemini-2.5-pro-exp-03-25">Gemini 2.5 Pro Experimental 03-25</option>
+                </optgroup>
+                <optgroup label="GEMMA">
+                    <option value="gemma-3-27b-it">Gemma 3 27B</option>
+                    <option value="gemma-2-2b-it">Gemma 2 2B</option>
+                    <option value="gemma-2-9b-it">Gemma 2 9B</option>
+                    <option value="gemma-2-27b-it">Gemma 2 27B</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <!-- Temperature -->
+        <div class="form-group">
+            <label for="temperature">Temperature (0-1)</label>
+            <input type="number" id="temperature" value="0.5" step="0.1" min="0" max="1">
+        </div>
+
+        <div class="form-group">
+            <label for="style">Writing Style</label>
+            <select id="style" class="w-full border rounded p-1">
+                <option value="academic">Academic Style</option>
+                <option value="professional">Professional Style</option>
+                <option value="casual">Casual Style</option>
+            </select>
+        </div>
+
+        <!-- Input Text -->
+        <div class="form-group">
+            <label for="inputText">Text to Translate</label>
+            <textarea id="inputText" rows="4" placeholder="Enter your text here..."></textarea>
+        </div>
+
+        <!-- Result -->
+        <div class="form-group">
+            <label for="result">Translation Result</label>
+            <div id="result">Translation will appear here...</div>
+            <button class="button-copy" onclick="copyResult()">Copy Result</button>
+        </div>
+
+        <!-- Buttons -->
+        <button onclick="doTranslate()">Translate Input Text</button>
+        <button onclick="translateSelectedText()">Translate Selected Text</button>
+        <button onclick="translateAllText()">Translate All Text</button>
+
+        <script>
+            const languages = [
+                { code: "auto", name: "Auto Detect" },
+                { code: "af", name: "Afrikaans" }, { code: "sq", name: "Albanian" },
+                { code: "am", name: "Amharic" }, { code: "ar", name: "Arabic" },
+                { code: "hy", name: "Armenian" }, { code: "az", name: "Azerbaijani" },
+                { code: "be", name: "Belarusian" }, { code: "bn", name: "Bengali" },
+                { code: "bg", name: "Bulgarian" }, { code: "ca", name: "Catalan" },
+                { code: "zh", name: "Chinese (Simplified)" },
+                { code: "zh-TW", name: "Chinese (Traditional)" },
+                { code: "hr", name: "Croatian" }, { code: "cs", name: "Czech" },
+                { code: "da", name: "Danish" }, { code: "nl", name: "Dutch" },
+                { code: "en", name: "English" }, { code: "et", name: "Estonian" },
+                { code: "fi", name: "Finnish" }, { code: "fr", name: "French" },
+                { code: "de", name: "German" }, { code: "el", name: "Greek" },
+                { code: "gu", name: "Gujarati" }, { code: "he", name: "Hebrew" },
+                { code: "hi", name: "Hindi" }, { code: "hu", name: "Hungarian" },
+                { code: "is", name: "Icelandic" }, { code: "id", name: "Indonesian" },
+                { code: "it", name: "Italian" }, { code: "ja", name: "Japanese" },
+                { code: "jv", name: "Javanese" }, { code: "ko", name: "Korean" },
+                { code: "lo", name: "Lao" }, { code: "la", name: "Latin" },
+                { code: "lv", name: "Latvian" }, { code: "lt", name: "Lithuanian" },
+                { code: "mk", name: "Macedonian" }, { code: "ms", name: "Malay" },
+                { code: "ml", name: "Malayalam" }, { code: "mt", name: "Maltese" },
+                { code: "mr", name: "Marathi" }, { code: "mn", name: "Mongolian" },
+                { code: "ne", name: "Nepali" }, { code: "no", name: "Norwegian" },
+                { code: "fa", name: "Persian" }, { code: "pl", name: "Polish" },
+                { code: "pt", name: "Portuguese" }, { code: "pa", name: "Punjabi" },
+                { code: "ro", name: "Romanian" }, { code: "ru", name: "Russian" },
+                { code: "sr", name: "Serbian" }, { code: "si", name: "Sinhala" },
+                { code: "sk", name: "Slovak" }, { code: "sl", name: "Slovenian" },
+                { code: "es", name: "Spanish" }, { code: "sw", name: "Swahili" },
+                { code: "sv", name: "Swedish" }, { code: "ta", name: "Tamil" },
+                { code: "te", name: "Telugu" }, { code: "th", name: "Thai" },
+                { code: "tr", name: "Turkish" }, { code: "uk", name: "Ukrainian" },
+                { code: "ur", name: "Urdu" }, { code: "uz", name: "Uzbek" },
+                { code: "vi", name: "Vietnamese" }, { code: "cy", name: "Welsh" },
+                { code: "xh", name: "Xhosa" }, { code: "yo", name: "Yoruba" },
+                { code: "zu", name: "Zulu" }
+            ];
+
+            function populateLanguageOptions() {
+                const sourceLangSelect = document.getElementById("sourceLang");
+                const targetLangSelect = document.getElementById("targetLang");
+
+                // Sort alphabetically by name
+                const sortedLangs = languages.sort((a, b) => a.name.localeCompare(b.name));
+
+                sortedLangs.forEach(lang => {
+                    const opt1 = new Option(lang.name, lang.code);
+                    const opt2 = new Option(lang.name, lang.code);
+                    sourceLangSelect.add(opt1.cloneNode(true));
+                    targetLangSelect.add(opt2.cloneNode(true));
+                });
+
+                sourceLangSelect.value = "auto";
+                targetLangSelect.value = "vi";
+            }
+
+            function getParams() {
+                return {
+                    sourceLang: document.getElementById('sourceLang').value,
+                    targetLang: document.getElementById('targetLang').value,
+                    model: document.getElementById('model').value,
+                    temperature: parseFloat(document.getElementById('temperature').value),
+                    style: document.getElementById("style").value,
+                };
+            }
+
+            function doTranslate() {
+                const inputText = document.getElementById('inputText').value;
+
+                if (!inputText.trim()) {
+                    document.getElementById('result').innerText = 'Please enter text to translate.';
+                    console.warn("No input text provided.");
+                    return;
+                }
+
+                document.getElementById('result').innerText = 'Translating...';
+
+                const params = getParams();
+                params.text = inputText;
+
+                google.script.run.withSuccessHandler(function (response) {
+                    document.getElementById('result').innerText = response;
+                }).translateText(params);
+            }
+
+            function translateSelectedText() {
+                const params = getParams();
+
+                google.script.run
+                    .withFailureHandler(function (err) {
+                        alert("Error:\n" + err.message);
+                    })
+                    .triggerMinimalDialogFromSidebar(params);
+            }
+
+            function translateAllText() {
+                const params = getParams();
+
+                google.script.run
+                    .withSuccessHandler(function () {
+                        alert("Document translated and added at the end.");
+                    })
+                    .withFailureHandler(function (err) {
+                        alert("Failed:\n" + err.message);
+                    })
+                    .translateFullDocument(params);
+            }
+
+            function copyResult() {
+                const resultText = document.getElementById('result').innerText;
+                if (!resultText.trim()) {
+                    alert("No translation to copy.");
+                    return;
+                }
+
+                navigator.clipboard.writeText(resultText).then(function () {
+                    alert("Translation copied to clipboard!");
+                }, function (err) {
+                    alert("Failed to copy: " + err);
+                });
+            }
+
+            window.onload = function () {
+                populateLanguageOptions();
+
+                // Debounce input
+                var debounceTimer;
+                var debounceDelay = 500;
+                document.getElementById('inputText').addEventListener('input', function () {
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(doTranslate, debounceDelay);
+                });
+            };
+
+        </script>
+    </body>
+
+</html>
