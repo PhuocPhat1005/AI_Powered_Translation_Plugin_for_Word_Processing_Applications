@@ -13,38 +13,38 @@ In this assignment, I will designed an AI-powered translation plugin for seamles
 
 This dedicated sidebar allows users to set up translation parameters without leaving their document.
 
-![Sidebar](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Sidebar.gif?token=GHSAT0AAAAAAC7KBT227KCUXCVEF4GW24QGZ7FULHA)
+![Sidebar](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Sidebar.gif)
 
 #### **Main Features** 
 
 In this AI Translation's sidebar, users can
 * Select the **source languages (input language)** and **target languages (desired translation output)** from a dropdown menu supporting a wide range of languages.
   
-![Src_Tar_Lang](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Src_Target_Lang.gif?token=GHSAT0AAAAAAC7KBT236CTWKBIHLXD2XU2UZ7FULSQ)
+![Src_Tar_Lang](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Src_Target_Lang.gif)
 
 * Choose from **multiple AI models** to translate the provided text.
 
-![ModelsAI](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/ModelAI.gif?token=GHSAT0AAAAAAC7KBT23FTOPPGTXJLDPG4WMZ7FUKMQ)
+![ModelsAI](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/ModelAI.gif)
 
 * Control **randomness** and **creativity** of the translation output by adjusting the **temperature** with the range of $0.0$ to $1.0$.
   
-![Temperature](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Adjust_temp.gif?token=GHSAT0AAAAAAC7KBT22MEYO3QII3QQOF7YMZ7FUJQA)
+![Temperature](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Adjust_temp.gif)
 
 * Choose the **writing style** for the translation output, such as *academic*, *professional*, or *casual*.
   
-![Style](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Wri_Style.gif?token=GHSAT0AAAAAAC7KBT23DBV7KML24VNLU7DIZ7FUMXQ)
+![Style](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Wri_Style.gif)
 
 * Enter the provided text that users want to translate into the **"Text to Translate"** frame. 
   
-![Text_Frame](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Text_Frame.gif?token=GHSAT0AAAAAAC7KBT22KFYKV2APZEV4S24QZ7FUL5A)
+![Text_Frame](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Text_Frame.gif)
 
 * View the translated output in the **"Translation Result"** frame.
   
-![result](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Result.gif?token=GHSAT0AAAAAAC7KBT22D3OCXHDUD62NAUIGZ7FUK3Q)
+![result](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Result.gif)
 
 * Copy the translated text to the clipboard by clicking the **"Copy Result"** button.
   
-![Copy](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/copy.png?token=GHSAT0AAAAAAC7KBT23SPDRV3SG7MAKQD7WZ7FUNZA)
+![Copy](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/copy.png)
 
 ### 2.2. Models AI-Powered Translation
 
@@ -63,7 +63,7 @@ Besides, the users can customize the translation result throughout the writing s
 
 This function allows users to enter text into the **"Text to Translate"** field and click the **"Translate Input Text"** button to receive the translated output in the **"Translation Result"** area. Additionally, the first time a user enters text, the translation result is generated automatically.
 
-![Trans_Input_Text](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Trans_Input_Text.gif?token=GHSAT0AAAAAAC7KBT22KZIPTGNV6OZZJ2V4Z7FUMJQ)
+![Trans_Input_Text](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/Trans_Input_Text.gif)
 
 #### **Translate Selected Text**
 
@@ -73,13 +73,13 @@ This feature enables users highlight the text they want to translate and generat
 
 In addition, users have capabilities to choose to replace the original text with the translated result by clicking the **"Replace"** button below the two sections in the dialog. After that, a confirmation message will appear to indicate a successful replacement. The user simply needs to click **"OK"** button in this message to finish the progress. The translated one will be then inserted into the original document, replacing the original text and highlighted for emphasis. Otherwise, if the user does not wish to do this function, they just close the dialog.
 
-![selected_text](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/selected_text.gif?token=GHSAT0AAAAAAC7KBT22B3IB3WKL6O5JJDAIZ7FUORA)
+![selected_text](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/selected_text.gif)
 
 #### **Translate Entire Document**
 
 This feature enables users translate whole document from source languages to target languages by clicking the **"Translate All Text"** button on the sidebar. As a result, the entire document will be translated and displayed at the bottom of the original content.
 
-![All](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/All_text.gif?token=GHSAT0AAAAAAC7KBT23UOSDQMKGMINEUSF4Z7FUJ4A)
+![All](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/All_text.gif)
 
 ## 3. Installation & Deployment
 ### 3.1. Installation
@@ -96,7 +96,7 @@ git clone https://github.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Wor
 
 The detailed process is as follows:
 
-![step_2](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/test.gif?token=GHSAT0AAAAAAC7KBT23RPPONQFPYN4LO5LEZ7FUPSQ)
+![step_2](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/step_2.gif)
 
 **Step 3:** Configure OAuth Scopes & Manifest
 
@@ -142,7 +142,7 @@ Open `appsscript.json` on Google Apps Script and add required OAuth Scopes and U
 
 The detailed process is as follows:
 
-![config_appsscript](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/config_appsscript.gif?token=GHSAT0AAAAAAC7KBT22Y6PMZO3BEPUMNNNQZ7FUNLA)
+![config_appsscript](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/config_appsscript.gif)
 
 
 **Step 4:** Set `GEMINI_API_KEY` in this project
@@ -154,7 +154,7 @@ The detailed process is as follows:
 
 The detailed process is as follows:
 
-![api](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/API.gif?token=GHSAT0AAAAAAC7KBT23MYIKUAYKEJN2JDFOZ7FTJBQ)
+![api](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/API.gif)
 
 
 ### 3.2. Testing
@@ -165,7 +165,7 @@ The detailed process is as follows:
 
 The detailed process is as follows:
 
-![test](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/step_2.gif?token=GHSAT0AAAAAAC7KBT23EMPXEORJIVAF5NTQZ7FUPAQ)
+![test](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/test.gif)
 
 ### 3.3. Deployment
 
@@ -176,4 +176,4 @@ The detailed process is as follows:
 
 The detailed process is as follows:
 
-![deploy](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/deploy.gif?token=GHSAT0AAAAAAC7KBT22FCAHTARA7NR25BS4Z7FUOFA)
+![deploy](https://raw.githubusercontent.com/PhuocPhat1005/AI_Powered_Translation_Plugin_for_Word_Processing_Applications/refs/heads/main/images/deploy.gif)
